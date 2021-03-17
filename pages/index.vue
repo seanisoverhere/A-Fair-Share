@@ -108,7 +108,7 @@
           <div class="container pt-5 pb-16 mx-auto px-4">
             <div class="flex flex-wrap justify-center text-center">
               <div class="w-full px-4">
-                <h2 class="text-3xl font-medium title-font pb-5">Hot Items For You</h2>
+                <h2 class="text-3xl font-medium title-font pb-10">Hot Items For You</h2>
                 <items-carousel></items-carousel>
               </div>
             </div>
