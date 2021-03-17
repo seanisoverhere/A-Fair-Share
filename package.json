@@ -1,0 +1,24 @@
+{
+  "name": "A-Fair-Share",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@babel/preset-env": "7.12.13",
+    "@nuxt/loading-screen": "^2.0.3",
+    "@nuxtjs/tailwindcss": "^3.4.2",
+    "@tailwindcss/postcss7-compat": "^2.0.3",
+    "aos": "^3.0.0-beta.6",
+    "autoprefixer": "^9",
+    "core-js": "^3.8.3",
+    "nuxt": "2.14",
+    "postcss": "^7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+  },
+  "devDependencies": {}
+}
