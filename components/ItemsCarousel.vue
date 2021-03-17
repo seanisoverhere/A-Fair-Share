@@ -1,17 +1,19 @@
 <template>
-  <swiper data-aos="fade-up" data-aos-delay="400" class="swiper" :options="swiperOption">
-    <swiper-slide>Item 1</swiper-slide>
-    <swiper-slide>Item 2</swiper-slide>
-    <swiper-slide>Item 3</swiper-slide>
-    <swiper-slide>Item 4</swiper-slide>
-    <swiper-slide>Item 5</swiper-slide>
-    <swiper-slide>Item 6</swiper-slide>
-    <swiper-slide>Item 7</swiper-slide>
-    <swiper-slide>Item 8</swiper-slide>
-    <swiper-slide>Item 9</swiper-slide>
-    <swiper-slide>Item 10</swiper-slide>
-    <div class="swiper-pagination" slot="pagination"></div>
-  </swiper>
+  <client-only>
+    <swiper data-aos="fade-up" data-aos-delay="400" class="swiper" :options="swiperOption">
+      <swiper-slide>Item 1</swiper-slide>
+      <swiper-slide>Item 2</swiper-slide>
+      <swiper-slide>Item 3</swiper-slide>
+      <swiper-slide>Item 4</swiper-slide>
+      <swiper-slide>Item 5</swiper-slide>
+      <swiper-slide>Item 6</swiper-slide>
+      <swiper-slide>Item 7</swiper-slide>
+      <swiper-slide>Item 8</swiper-slide>
+      <swiper-slide>Item 9</swiper-slide>
+      <swiper-slide>Item 10</swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+    </swiper>
+  </client-only>
 </template>
 
 <script>
