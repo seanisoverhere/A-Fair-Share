@@ -181,6 +181,7 @@
         </div>
       </section>
       <testimonial-component></testimonial-component>
+      <footer-component></footer-component>
     </main>
   </div>
 </template>
@@ -188,6 +189,7 @@
 import NavbarComponent from "../components/Navbar.vue"
 import ItemsCarousel from "../components/ItemsCarousel"
 import TestimonialComponent from "../components/Testimonial"
+import FooterComponent from "../components/Footer"
 
 const url = `https://api.unsplash.com/photos/random/?client_id=${process.env.UNSPLASH_API_KEY}`
 console.log(url)
@@ -201,7 +203,8 @@ export default {
   components: {
     NavbarComponent,
     ItemsCarousel,
-    TestimonialComponent
+    TestimonialComponent,
+    FooterComponent
   },
   async beforeCreate() {
     // const ip = await this.$axios.$get(url)
