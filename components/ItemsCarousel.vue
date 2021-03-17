@@ -39,43 +39,47 @@
 </template>
 
 <script>
-  import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-  import 'swiper/css/swiper.css'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import 'swiper/css/swiper.css'
+import { directive } from 'vue-awesome-swiper'
 
-  export default {
-    name: 'swiper-example-responsive-breakpoints',
-    title: 'Responsive breakpoints',
-    components: {
-      Swiper,
-      SwiperSlide
-    },
-    data() {
-      return {
-        swiperOption: {
-          slidesPerView: 5,
-          spaceBetween: 50,
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true
+export default {
+  name: 'swiper-example-responsive-breakpoints',
+  title: 'Responsive breakpoints',
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+  directive: {
+    swiper: directive
+  },
+  data() {
+    return {
+      swiperOption: {
+        slidesPerView: 5,
+        spaceBetween: 50,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 40
           },
-          breakpoints: {
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 40
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 30
-            },
-            320: {
-              slidesPerView: 1,
-              spaceBetween: 10
-            }
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30
+          },
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 10
           }
         }
       }
     }
   }
+}
 </script>
 
 <style scoped>
