@@ -1,17 +1,41 @@
 <template>
-  <swiper data-aos="fade-up" data-aos-delay="400" class="swiper" :options="swiperOption">
-    <swiper-slide>Item 1</swiper-slide>
-    <swiper-slide>Item 2</swiper-slide>
-    <swiper-slide>Item 3</swiper-slide>
-    <swiper-slide>Item 4</swiper-slide>
-    <swiper-slide>Item 5</swiper-slide>
-    <swiper-slide>Item 6</swiper-slide>
-    <swiper-slide>Item 7</swiper-slide>
-    <swiper-slide>Item 8</swiper-slide>
-    <swiper-slide>Item 9</swiper-slide>
-    <swiper-slide>Item 10</swiper-slide>
-    <div class="swiper-pagination" slot="pagination"></div>
-  </swiper>
+  <div v-swiper="swiperOption">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        Item 1
+      </div>
+      <div class="swiper-slide">
+        Item 2
+      </div>    
+      <div class="swiper-slide">
+        Item 3
+      </div>    
+      <div class="swiper-slide">
+        Item 4
+      </div>    
+      <div class="swiper-slide">
+        Item 5
+      </div>    
+      <div class="swiper-slide">
+        Item 6
+      </div>    
+      <div class="swiper-slide">
+        Item 7
+      </div>    
+      <div class="swiper-slide">
+        Item 8
+      </div>    
+      <div class="swiper-slide">
+        Item 9
+      </div>    
+      <div class="swiper-slide">
+        Item 10
+      </div>    
+    </div>
+  <div class="swiper-pagination" slot="pagination"></div>
+</div>
+
+
 </template>
 
 <script>
@@ -68,6 +92,7 @@
     font-weight: bold;
     font-size:  15px;
     background-color: #fff;
+    height: 400px;
   }
 
 </style>
