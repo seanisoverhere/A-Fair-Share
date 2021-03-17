@@ -34,8 +34,6 @@
     </div>
   <div class="swiper-pagination" slot="pagination"></div>
 </div>
-
-
 </template>
 
 <script>
