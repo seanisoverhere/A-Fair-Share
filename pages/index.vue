@@ -19,6 +19,8 @@
             <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
               <div class="px-6">
                 <h1 class="text-white font-semibold text-5xl">
+                  {{ imageURL }}
+                  <br>
                   Something something crowdsource for free shipping
                 </h1>
                 <p class="mt-4 text-lg text-gray-300">
@@ -59,7 +61,7 @@
                     >
                       <i class="fas fa-award"></i>
                     </div>
-                    <h6 class="text-xl font-semibold">Crowsource Shipping</h6>
+                    <h6 class="text-xl font-semibold">Crowdsource Shipping</h6>
                     <p class="mt-2 mb-4 text-gray-600">
                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit dignissimos aut possimus in voluptatem est officiis alias odio commodi. Sint.
                     </p>
@@ -414,10 +416,24 @@
 </template>
 <script>
 import NavbarComponent from "../components/Navbar.vue";
+
+const url = `https://api.unsplash.com/photos/random/?client_id=${process.env.UNSPLASH_API_KEY}`
+console.log(url)
 export default {
+  data() {
+    return {
+      imageURL: null
+    }
+  },
   name: "landing-page",
   components: {
     NavbarComponent,
-  }
+  },
+  async beforeCreate() {
+    // const ip = await this.$axios.$get(url)
+    // console.log(ip.urls.full)
+    // this.imageURL = ip
 }
+  }
+
 </script>

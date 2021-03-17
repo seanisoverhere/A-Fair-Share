@@ -36,8 +36,13 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
+  modules: ['@nuxtjs/axios',
+            '@nuxtjs/dotenv'
   ],
+
+  axios: {
+    // proxy: true
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
