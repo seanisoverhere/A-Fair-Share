@@ -1,5 +1,5 @@
 <template>
-  <swiper class="swiper" :options="swiperOption">
+  <swiper data-aos="fade-up" data-aos-delay="400" class="swiper" :options="swiperOption">
     <swiper-slide>Item 1</swiper-slide>
     <swiper-slide>Item 2</swiper-slide>
     <swiper-slide>Item 3</swiper-slide>
