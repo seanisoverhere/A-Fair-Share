@@ -21,7 +21,8 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [ {src: "@/plugins/aos", mode: "client"},
+  plugins: [ { src: "@/plugins/aos", mode: "client" }, 
+             { src: "@/plugins/vue-awesome-swiper", mode: "client" }
   ],
 
   purgeCSS: {
@@ -36,8 +37,13 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
+  modules: ['@nuxtjs/axios',
+            '@nuxtjs/dotenv'
   ],
+
+  axios: {
+    // proxy: true
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
