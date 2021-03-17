@@ -26,7 +26,7 @@
                 </p>
               </div>
               <div class="pt-10">
-                <button class="sickBtn">Shop Now<span class="icon-right"></span><span class="icon-right after"></span></button>
+                <button-component></button-component>
               </div>
             </div>
           </div>
@@ -190,6 +190,7 @@ import NavbarComponent from "../components/Navbar.vue"
 import ItemsCarousel from "../components/ItemsCarousel"
 import TestimonialComponent from "../components/Testimonial"
 import FooterComponent from "../components/Footer"
+import ButtonComponent from "../components/Button"
 
 const url = `https://api.unsplash.com/photos/random/?client_id=${process.env.UNSPLASH_API_KEY}`
 console.log(url)
@@ -204,7 +205,8 @@ export default {
     NavbarComponent,
     ItemsCarousel,
     TestimonialComponent,
-    FooterComponent
+    FooterComponent,
+    ButtonComponent
   },
   async beforeCreate() {
     // const ip = await this.$axios.$get(url)
@@ -215,93 +217,4 @@ export default {
 
 </script>
 
-<style scoped>
-
-.sickBtn {
-  letter-spacing: 1px;
-  background: none;
-  color: white;
-  position: relative;
-  outline: none;
-  border: none;
-  height: 50px;
-  width: 190px;
-  font-size: 14px;
-  z-index: 2;
-  transition: 0.01s 0.23s ease-out all;
-  overflow: hidden;
-}
-.sickBtn:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 80%;
-  background: #2F76C7;
-  z-index: -1;
-  transition: 0.3s ease-in all;
-}
-.sickBtn:after {
-  content: "";
-  position: absolute;
-  left: -5%;
-  top: 5%;
-  height: 90%;
-  width: 5%;
-  background: white;
-  z-index: -1;
-  transition: 0.4s 0.02s ease-in all;
-}
-.sickBtn:hover {
-  cursor: pointer;
-  color: transparent;
-}
-.sickBtn:hover:before {
-  left: 100%;
-  width: 25%;
-}
-.sickBtn:hover:after {
-  left: 100%;
-  width: 70%;
-}
-.sickBtn:hover .icon-right.after:after {
-  left: -80px;
-  color: white;
-  transition: 0.2s 0.2s ease all;
-}
-.sickBtn:hover .icon-right.after:before {
-  left: -104px;
-  top: 14px;
-  opacity: 0.2;
-  color: white;
-}
-
-.icon-right {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.icon-right:after {
-  content: "↓";
-  font-size: 24px;
-  display: inline-block;
-  position: relative;
-  top: 26px;
-  transform: translate3D(0, -50%, 0);
-}
-.icon-right.after:after {
-  left: -250px;
-  color: rgb(63, 59, 59);
-  transition: 0.15s 0.25s ease left, 0.5s 0.05s ease color;
-}
-.icon-right.after:before {
-  content: "Shop Now";
-  position: absolute;
-  left: -230px;
-  top: 14px;
-  opacity: 0;
-  transition: 0.2s ease-in all;
-}
-
-</style>
+<style scoped></style>
