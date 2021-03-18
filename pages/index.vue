@@ -187,8 +187,8 @@
 </template>
 <script>
 import NavbarComponent from "../components/Navbar.vue"
-import ItemsCarousel from "../components/ItemsCarousel"
 import TestimonialComponent from "../components/Testimonial"
+import ItemsCarousel from "../components/ItemsCarousel"
 import FooterComponent from "../components/Footer"
 import ButtonComponent from "../components/Button"
 
@@ -203,10 +203,10 @@ export default {
   name: "landing-page",
   components: {
     NavbarComponent,
-    ItemsCarousel,
     TestimonialComponent,
     FooterComponent,
-    ButtonComponent
+    ButtonComponent,
+    ItemsCarousel
   },
   async beforeCreate() {
     // const ip = await this.$axios.$get(url)

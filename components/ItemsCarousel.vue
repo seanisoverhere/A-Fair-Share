@@ -1,70 +1,34 @@
 <template>
-  <swiper data-aos="fade-up" data-aos-delay="400" class="swiper" :options="swiperOption">
-    <swiper-slide>Item 1</swiper-slide>
-    <swiper-slide>Item 2</swiper-slide>
-    <swiper-slide>Item 3</swiper-slide>
-    <swiper-slide>Item 4</swiper-slide>
-    <swiper-slide>Item 5</swiper-slide>
-    <swiper-slide>Item 6</swiper-slide>
-    <swiper-slide>Item 7</swiper-slide>
-    <swiper-slide>Item 8</swiper-slide>
-    <swiper-slide>Item 9</swiper-slide>
-    <swiper-slide>Item 10</swiper-slide>
-    <div class="swiper-pagination" slot="pagination"></div>
-  </swiper>
+  <div class="carousel-wrapper">
+    <VueSlickCarousel v-bind="slickOptions">
+      <div v-for="i in 5" :key="i" class="img-wrapper">
+        <img :src="`./${i}-200x100.jpg`" />
+      </div>
+    </VueSlickCarousel>
+  </div>
 </template>
 
 <script>
-import { directive } from 'vue-awesome-swiper'
-import 'swiper/css/swiper.css'
-
 export default {
-  name: 'swiper-example-responsive-breakpoints',
-  title: 'Responsive breakpoints',
-  directives: {
-    swiper: directive
-  },
   data() {
     return {
-      swiperOption: {
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true
-        },
-        breakpoints: {
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 40
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 30
-          },
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 10
-          }
-        }
+      slickOptions: {
+        slidesToShow: 3,
+        arrows: false
       }
     }
   }
 }
 </script>
 
-<style scoped>
-.swiper {
-  height: 500px;
-  width: 100%;
+<style>
+.carousel-wrapper {
+  padding: 40px;
 }
-
-.swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-weight: bold;
-    font-size:  15px;
-    background-color: #fff;
-  }
-
+.img-wrapper img {
+  margin: auto;
+  width: 200px;
+  height: 100px;
+  background-image: linear-gradient(gray 100%, transparent 0);
+}
 </style>

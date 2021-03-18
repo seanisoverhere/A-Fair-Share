@@ -8,11 +8,11 @@
       <span class="ml-3 text-xl">A-Fair Share</span>
     </nuxt-link>
     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-      <nuxt-link to="/hot">
-      <a class="mr-5 hover:text-gray-900 test">Hot Items</a>
+      <nuxt-link to="/hot" class="mr-5 hover:text-gray-900 test">
+      Hot Items
       </nuxt-link>
-      <nuxt-link to="/new">
-      <a class="mr-5 hover:text-gray-900 test">New Arrivals</a>
+      <nuxt-link to="/new" class="mr-5 hover:text-gray-900 test">
+      New Arrivals
       </nuxt-link>
     </nav>
     <nuxt-link to="/login">

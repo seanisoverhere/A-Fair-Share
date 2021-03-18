@@ -161,8 +161,5 @@ button {
   font-family: inherit;
   font-size: 0.7em;
 }
-button a {
-  text-decoration: none;
-}
 
 </style>
