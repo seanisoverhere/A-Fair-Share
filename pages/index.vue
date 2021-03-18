@@ -193,7 +193,7 @@ import FooterComponent from "../components/Footer"
 import ButtonComponent from "../components/Button"
 
 const url = `https://api.unsplash.com/photos/random/?client_id=${process.env.UNSPLASH_API_KEY}`
-console.log(url)
+
 export default {
   data() {
     return {
