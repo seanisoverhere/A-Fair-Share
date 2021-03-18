@@ -17,11 +17,11 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['aos/dist/aos.css', 'vue-slick-carousel/dist/vue-slick-carousel.css'
+  css: ['aos/dist/aos.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [ { src: "@/plugins/aos", mode: "client" },  { src: "@/plugins/vue-slick-carousel" }, { src: "@/plugins/vue-awesome-swiper", ssr: "false" }
+  plugins: [ { src: "@/plugins/aos", mode: "client" }, { src: "@/plugins/vue-awesome-swiper", ssr: "false" }
   ],
 
   purgeCSS: {
@@ -37,7 +37,8 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/axios',
-            '@nuxtjs/dotenv'
+            '@nuxtjs/dotenv',
+            'vue-scrollto/nuxt'
   ],
 
   axios: {

@@ -20,11 +20,14 @@
     "core-js": "^3.8.3",
     "nuxt": "2.14",
     "postcss": "^7",
-    "sass-loader": "^10.1.1",
+    "sass-loader": "^11.0.1",
     "swiper": "5.4.5",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vue-awesome-swiper": "^4.1.1",
-    "vue-slick-carousel": "^1.0.6"
+    "vue-scrollto": "^2.20.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "deepmerge": "^4.2.2",
+    "sass": "^1.32.8"
+  }
 }

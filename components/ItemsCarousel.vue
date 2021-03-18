@@ -10,6 +10,8 @@
     <swiper-slide>Slide 8</swiper-slide>
     <swiper-slide>Slide 9</swiper-slide>
     <swiper-slide>Slide 10</swiper-slide>
+    <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
+    <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
     <div class="swiper-pagination" slot="pagination"></div>
   </swiper>
 </template>
@@ -28,21 +30,24 @@ export default {
         },
         breakpoints: {
           1024: {
-            slidesPerView: 4,
+            slidesPerView: 3,
             spaceBetween: 40
           },
           768: {
-            slidesPerView: 3,
-            spaceBetween: 30
-          },
-          640: {
             slidesPerView: 2,
-            spaceBetween: 20
+            spaceBetween: 30
           },
           320: {
             slidesPerView: 1,
             spaceBetween: 10
           }
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        },
+        keyboard: {
+          enabled: true
         }
       }
     }
@@ -50,9 +55,10 @@ export default {
 }
 </script>
 <style scoped>
+
 .carousel-wrapper {
   padding: 40px;
-  height: 300px;
+  height: 350px;
   width: 100%;
 }
 .swiper-slide {
@@ -61,7 +67,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 200px;
-  height: 300px;
+  height: 350px;
   background-image: linear-gradient(gray 100%, transparent 0);
 }
 

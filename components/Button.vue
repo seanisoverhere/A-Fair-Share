@@ -3,7 +3,7 @@
     <div class="btn-group">
       <div class="btn ball">
         <button>
-          <div class="pokemon-ball"></div><a>Shop Now<span data-letters="Go!"></span><span data-letters="Go!"></span></a>
+          <div class="pokemon-ball"></div><a href="#" v-scroll-to="'#element'">Shop Now<span data-letters="Go!"></span><span data-letters="Go!"></span></a>
         </button>
       </div>
     </div>
