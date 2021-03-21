@@ -1,203 +1,54 @@
 <template>
-  <article>
-    <section>
-        <div>
-          <h1>Scrolling half by half</h1>
-          <p>Made in pure #CSS and almost all is "old properties" method. And a bit imagination.<br/>
-          Yes, the flexbox is old now.</p>
+  <section class="text-gray-600 body-font">
+    <div class="text-center mt-20">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4">Our Services at a Glance</h1>
+      <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500s">To date, A-Fair Share has reached the following:</p>
+      <div class="flex mt-6 justify-center">
+        <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+      </div>
+    </div>
+   <div data-aos="fade-up" data-aos-delay="400" class="flex flex-wrap m-12 text-center">
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+            <path d="M8 17l4 4 4-4m-4-5v9"></path>
+            <path d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"></path>
+          </svg>
+          <h2 class="title-font font-medium text-3xl text-gray-900">2.7K</h2>
+          <p class="leading-relaxed">Orders Shipped</p>
         </div>
-    </section>
-    
-    <figure>
-      <img src='@/assets/img/clothes-1.jpeg' alt />
-    </figure>
-    <section>
-      <div>
-        <h2>I'm Kseso,<br/>
-        &ldquo;a #obCSServer&rdquo;</h2>
-        <p>Ramajero Argonauta, Enredique Amanuense de #CSS.</p>
       </div>
-    </section>
-    
-    <figure>
-      <img src='@/assets/img/clothes-3.jpeg' alt />
-    </figure>
-    <section>
-      <div>
-        <h2><a href='https://escss.blogspot.com'>&xi;sCSS Blog</a></h2>
-        <p>#impoCSSible inside EsCSS. A Spanish #CSS blog where the borders & limits of #CSS disappear.</p>
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 00-3-3.87m-4-12a4 4 0 010 7.75"></path>
+          </svg>
+          <h2 class="title-font font-medium text-3xl text-gray-900">1.3K</h2>
+          <p class="leading-relaxed">Users</p>
+        </div>
       </div>
-    </section>
-    
-    <figure>
-      <img src='@/assets/img/clothes-4.jpeg' alt />
-    </figure>
-    <section>
-      <div>
-        <h2>#impoCSSible is nothing</h2>
-        <p>You don´t need Javascript or #CSS processors either for almost 100% of what you want to do.</p>
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+            <path d="M3 18v-6a9 9 0 0118 0v6"></path>
+            <path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"></path>
+          </svg>
+          <h2 class="title-font font-medium text-3xl text-gray-900">74</h2>
+          <p class="leading-relaxed">Files</p>
+        </div>
       </div>
-    </section>
-    
-    <figure>
-      <img src='@/assets/img/clothes-5.jpeg' alt />
-    </figure>
-    <section>
-      <div>
-        <h2>Idea from E.Bouças´s <a href='https://codepen.io/eduardoboucas/full/qdaOWv/'>pen</a></h2>
-        <p>Without jQuery or Javascript, nor fixed position (bye IOs problems)</p>
+      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="text-indigo-500 w-12 h-12 mb-3 inline-block" viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <h2 class="title-font font-medium text-3xl text-gray-900">46</h2>
+          <p class="leading-relaxed">Places</p>
+        </div>
       </div>
-    </section>
+    </div>
 
-  </article>
+  </section>
 </template>
-
-
-<style scoped>
-*,*:before,*:after {box-sizing:inherit;margin:0; padding:0; border:0 none; position: relative;}
-html {
-	background: #000;
-	box-sizing:border-box;
-	font-family: 'Vollkorn', sans-serif;
-	font-size: 1rem;
-	color: #000;
-}
-
-@media screen and (min-width: 700px) {
-	body > article {
-		display: flex;
-		flex-wrap: wrap;
-	}
-	figure {
-		background: #eee;
-		width: calc( 50% + 1px);
-		height: 100vh;
-		margin: 0 auto 10vh 0;
-		position: sticky;
-		top: 0;
-		overflow: hidden;
-		box-shadow: 4px -4px 8px rgba(0,0,0,.4);
-			}
-	figure::after {
-		content: '';
-		position: absolute;
-		top: 5vmin;
-		right: 5vmin;
-		bottom: 5vmin;
-		left: 45%;
-		border: 2px solid #fff;
-		outline: 1px solid #fff;
-		outline-offset: -5vmin;
-		backdrop-filter: grayscale(1);
-		pointer-events: none;
-			}
-	figure:nth-of-type(2n)::after {
-		right: 45%;
-		left: 5vmin;
-	}
-	section {
-		background: #e5e5e5;
-		width: calc(50% + 1px);
-		height: 100vh;
-		margin: 0 0 10vh auto;
-		position: sticky;
-		top: 0;
-		padding: 5vmin;
-		box-shadow: -4px -4px 8px rgba(0,0,0,.4);
-			}
-	figure:nth-of-type(1),
-	section:nth-of-type(1) {
-		margin: 0 0 10vh 0;
-		width: 50%;
-			}
-	figure:nth-of-type(2n) {
-		margin: 0 0 10vh auto;
-		box-shadow: -4px -4px 8px rgba(0,0,0,.4);
-			}
-	section:nth-of-type(2n) {
-		margin: 0 auto 10vh 0;
-		box-shadow: 4px -4px 8px rgba(0,0,0,.4);
-		}
-	figure:last-of-type,
-	section:last-of-type {
-		margin-bottom: 0;
-	}
-	section::before {
-		background: inherit;
-		z-index: 1;
-		content: '';
-		position: absolute;
-		top: 50%;
-		left:0;
-		width: 7vmin;
-		height: 7vmin;
-		transform: translate(calc(-50% + 1px), -50%) rotate(-45deg);
-		clip-path: polygon(-15% -15%, 110% 0%, 0% 110%);
-		box-shadow: -4px -2px 8px rgba(0,0,0,.4);
-		border-radius: 1.5vmin 0 0 0;
-	}
-	section:nth-of-type(2n)::before {
-		left:auto;
-		right: 0;
-		transform: translate(calc(50% - 1px), -50%) rotate(-45deg) scale(-1);
-	}
-	section::after {
-		content: '';
-		position: absolute;
-		top: 5vmin;
-		right: 45%;
-		bottom: 5vmin;
-		left: 5vmin;
-		border: 2px solid #fff;
-		outline: 1px solid #fff;
-		outline-offset: -5vmin;
-		backdrop-filter: invert(1);
-		pointer-events: none;
-	}
-	section:nth-of-type(2n):after {
-		right: 5vmin;
-		left: 45%;
-	}
-	figure img {
-		min-width: 100%;
-		min-height: 100%;
-		object-fit: cover;
-		object-position: center;
-	}
-	section > div {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		height: 100%;
-		padding: 1rem;
-	}
-	h1,
-	h2 {
-		margin: 15% 0 auto;
-		font-size: calc(5vmin + 3vmax);
-		text-align: center;
-		font-weight: 700;
-		line-height: 1;
-		word-spacing: .5rem;
-	}
-	p {
-		text-align: right;
-		width: 100%;
-		font-family: "Cormorant", serif;
-		font-weight: 400;
-		font-style: italic;
-		font-size: calc(1.5vmin + 1.75vmax);
-		margin-bottom: 5%;
-	}
-	a {
-		color: transparent;
-		-webkit-text-stroke: 2px #212121;
-		text-decoration: none;
-    font-weight: 900;
-    letter-spacing: 2px;
-	}
-	a:hover, a:focus {	
-		-webkit-text-stroke: 1px #999;
-	}
-}
-</style>

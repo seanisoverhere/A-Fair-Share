@@ -127,6 +127,9 @@
               <h2 class="text-3xl font-medium title-font pb-10">
                 Hot Items For You
               </h2>
+              <div class="flex mb-5 -mt-5 justify-center">
+                <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+              </div>
               <div data-aos="fade-up" data-aos-delay="400">
                 <items-carousel></items-carousel>
               </div>
@@ -135,7 +138,7 @@
         </div>
       </section>
       <section>
-        <div class="flex flex-wrap items-center my-24">
+        <div>
           <split-component></split-component>
         </div>
       </section>
