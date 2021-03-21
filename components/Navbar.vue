@@ -1,52 +1,36 @@
-<template>  
-  <header class="text-gray-600 body-font bg-white fixed z-50 w-full shadow-lg">
-  <div class="container mx-auto flex flex-wrap p-4 pl-5 flex-col md:flex-row items-center">
-    <nuxt-link to="/" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-      </svg>
-      <span class="ml-3 text-xl">A-Fair Share</span>
-    </nuxt-link>
-    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
-      <nuxt-link to="/hot" class="mr-5 hover:text-gray-900 test">
-      Hot Items
+<template>
+  <header class="bg-white fixed w-full z-50 lg:h-15 sm:flex sm:justify-between shadow-lg sm:items-center lg:px-16 sm:px-4 sm:py-3">
+    <div class="flex items-center justify-between px-4 py-3 sm:p-0">
+      
+      <div>
+        <img class="h-8" src="../assets/img/logo.svg" alt="Workcation">
+      </div>
+      <nuxt-link to="/">
+        <div class="block px-2 py-1 text-black font-semibold">A-Fair-Share</div>
       </nuxt-link>
-      <nuxt-link to="/new" class="mr-5 hover:text-gray-900 test">
-      New Arrivals
-      </nuxt-link>
+      <div class="sm:hidden">
+        <button @click="isOpen = !isOpen" type="button" class="block text-gray-500 hover:text-black focus:text-black focus:outline-none">
+          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            <path v-if="isOpen" fill-rule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"/>
+            <path v-if="!isOpen" fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <nav :class="isOpen ? 'block' : 'hidden'" class="px-2 pt-2 pb-4 sm:flex sm:p-0">
+      <nuxt-link to="/hot" class="block px-2 py-1 text-black font-semibold rounded hover:bg-gray-200">Hot Items</nuxt-link>
+      <nuxt-link to="/new" class="mt-1 block px-2 py-1 text-black font-semibold rounded hover:bg-gray-200 sm:mt-0 sm:ml-2">New Arrivals</nuxt-link>
+      <nuxt-link to="/login" class="mt-1 block px-2 py-1 text-black font-semibold rounded hover:bg-gray-200 sm:mt-0 sm:ml-2">Sign In</nuxt-link>
     </nav>
-    <nuxt-link to="/login">
-    <button class="inline-flex items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 md:mt-0">Log In    
-    </button>
-    </nuxt-link>
-  </div>
-</header>
+  </header>
 </template>
 
-
-<style scoped>
-
-.test {
-  color: #000;
-  text-transform: uppercase;
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
+<script>
+export default {
+  data() {
+    return {
+      isOpen: false,
+    }
+  },
 }
-.test:after {    
-  background: none repeat scroll 0 0 transparent;
-  content: "";
-  display: block;
-  height: 2px;
-  left: 50%;
-  position: absolute;
-  background: #000;
-  transition: width 0.3s ease 0s, left 0.3s ease 0s;
-  width: 0;
-}
-.test:hover:after { 
-  width: 100%; 
-  left: 0; 
-}
-
-</style>
+</script>
