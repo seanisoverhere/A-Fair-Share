@@ -21,7 +21,7 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [ { src: "@/plugins/aos", mode: "client" }, { src: "@/plugins/vue-awesome-swiper", ssr: "false" }
+  plugins: [{ src: "@/plugins/aos", mode: "client" }, { src: "@/plugins/vue-awesome-swiper", ssr: "false" }
   ],
 
   purgeCSS: {
@@ -37,12 +37,18 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/axios',
-            '@nuxtjs/dotenv',
-            'vue-scrollto/nuxt'
+    '@nuxtjs/dotenv',
+    'vue-scrollto/nuxt'
   ],
 
   axios: {
-    // proxy: true
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': {
+      target: 'http://localhost:5003', pathRewrite: { ' ^ /api/': '' }, changeOrigin: true
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -50,5 +56,5 @@ export default {
   }
 
 
-  
+
 }
