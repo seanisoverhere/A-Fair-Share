@@ -40,7 +40,7 @@ export default {
   components: {
     NavbarComponent
   },
-  // carousel
+  // items pics
   async beforeCreate() {
     //console.log('hi')
     const ip = await this.$axios.$get(`http://localhost:5001/item/all/pending`)
