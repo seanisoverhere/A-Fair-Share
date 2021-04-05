@@ -66,9 +66,7 @@
                   </div>
                   <h6 class="text-xl font-semibold">Crowdsource Shipping</h6>
                   <p class="mt-2 mb-4 text-gray-600">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Suscipit dignissimos aut possimus in voluptatem est officiis
-                    alias odio commodi. Sint.
+                    Shopping online can never be more affordable now that you are able to share shipping with people from your region.
                   </p>
                 </div>
               </div>
@@ -89,9 +87,7 @@
                   </div>
                   <h6 class="text-xl font-semibold">Trustworthy</h6>
                   <p class="mt-2 mb-4 text-gray-600">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Maiores quasi ad, molestias hic culpa architecto. Deserunt
-                    accusamus iste provident eos.
+                    In A-Fair-Share, we take pride in our customer experience. 
                   </p>
                 </div>
               </div>
@@ -110,11 +106,9 @@
                   >
                     <i class="fas fa-fingerprint"></i>
                   </div>
-                  <h6 class="text-xl font-semibold">Something something</h6>
+                  <h6 class="text-xl font-semibold">Hassle-Free</h6>
                   <p id="element" class="mt-2 mb-4 text-gray-600">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Voluptatibus id recusandae nihil cum animi itaque quae sit
-                    molestias a laborum.
+                    We want to make shipping easy and convenient.
                   </p>
                 </div>
               </div>
