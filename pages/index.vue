@@ -169,6 +169,7 @@ export default {
     // const ip = await this.$axios.$get(url)
     // console.log(ip.urls.full)
     // this.imageURL = ip
+    console.log(this.$auth.$state)
   },
 };
 </script>
