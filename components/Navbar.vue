@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-white fixed w-full z-50 lg:h-15 sm:flex sm:justify-between shadow-lg sm:items-center lg:px-16 sm:px-4 sm:py-3">
+  <header class="bg-white fixed w-full z-40 lg:h-15 sm:flex sm:justify-between shadow-lg sm:items-center lg:px-16 sm:px-4 sm:py-3">
     <div class="flex items-center justify-between px-4 py-3 sm:p-0">
       
       <div>
