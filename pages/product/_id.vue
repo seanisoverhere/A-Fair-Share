@@ -1,7 +1,8 @@
 <template>
     <div>
     <navbar-component></navbar-component>
-    <section class="text-gray-600 body-font">
+    <section class="text-gray-600 body-font overflow-hidden">
+    <navbar-component></navbar-component>   
     <div class="container px-5 py-24 mx-auto">
         <div class="lg:w-4/5 mx-auto flex flex-wrap">
         <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" :src="image_url">
@@ -87,7 +88,7 @@
 </template>
 
 <script>
-import NavbarComponent from "../components/Navbar.vue";
+import NavbarComponent from "../../components/Navbar.vue";
 
 export default {
     data() {
@@ -101,17 +102,11 @@ export default {
     },
     // product listing
     async beforeCreate() {
-       
-        /////HARDCODED ITEM! in URL
-        const ip = await this.$axios.$get(`http://localhost:5001/item/v9OETwCSLkm5g8M`)
-        console.log(ip)
-        this.post = ip.items
-        this.image_url = ip.items.images[0]
-        console.log(this.post)
-        console.log(this.image_url)
-        
+        const item_id = this.$route.params.id
+        const response = await this.$axios.$get(`http://localhost:5001/item/${item_id}`)
+        this.post = response.items
+        this.image_url = response.items.images[0]
     }
-
 }
 
 </script>
