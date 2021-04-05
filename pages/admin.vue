@@ -24,6 +24,11 @@
                 <th
                   class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
                 >
+                  Shipping Count
+                </th>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                >
                   Expiry Date
                 </th>
                 <th
@@ -59,10 +64,14 @@
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <p class="text-gray-900 whitespace-no-wrap">{{post.current_count}}</p>
                 </td>
+                <!-- shipping count -->
+                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p class="text-gray-900 whitespace-no-wrap">{{post.shipping_count}}</p>
+                </td>
                 <!-- expiry date -->
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <p class="text-gray-900 whitespace-no-wrap">
-                    Jan 21, 2020
+                    {{post.expiry}}
                   </p>
                 </td>
                 <!-- status of item -->
@@ -74,7 +83,7 @@
                       aria-hidden
                       class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
                     ></span>
-                    <span class="relative">Shipped</span>
+                    <span class="relative">{{post.status}}</span>
                   </span>
                 </td>
               </tr>
