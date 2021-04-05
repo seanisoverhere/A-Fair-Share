@@ -18,9 +18,10 @@
       </div>
     </div>
     <nav :class="isOpen ? 'block' : 'hidden'" class="px-2 pt-2 pb-4 sm:flex sm:p-0">
-      <nuxt-link to="/hot" class="block px-2 py-1 text-black font-semibold rounded hover:bg-gray-200">Hot Items</nuxt-link>
+      <nuxt-link to="/hot" class="block px-2 py-1 text-black font-semibold rounded hover:bg-gray-200">All Items</nuxt-link>
       <nuxt-link to="/checkout" class="mt-1 block px-2 py-1 text-black font-semibold rounded hover:bg-gray-200 sm:mt-0 sm:ml-2">Checkout</nuxt-link>
-      <nuxt-link to="/login" class="mt-1 block px-2 py-1 text-black font-semibold rounded hover:bg-gray-200 sm:mt-0 sm:ml-2">Sign In</nuxt-link>
+      <nuxt-link v-if="!isSignedIn" to="/login" class="mt-1 block px-2 py-1 text-black font-semibold rounded hover:bg-gray-200 sm:mt-0 sm:ml-2">Sign In</nuxt-link>
+      <nuxt-link v-if="isSignedIn" to="/login" class="mt-1 block px-2 py-1 text-black font-semibold rounded hover:bg-gray-200 sm:mt-0 sm:ml-2">Logout</nuxt-link>
     </nav>
   </header>
 </template>
@@ -30,7 +31,12 @@ export default {
   data() {
     return {
       isOpen: false,
+      isSignedIn: false
     }
   },
+
+  mounted() {
+    if (this.$auth.$state.user) this.isSignedIn = true
+  }
 }
 </script>
