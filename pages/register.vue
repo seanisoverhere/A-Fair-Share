@@ -1,13 +1,7 @@
 <template>
   <body class="bg-white font-family-karla h-screen">
     <div>
-      <!-- <Alert -->
-      <!-- :visible="alertVisible" -->
-      <!-- position="top-right" -->
-      <!-- color="warning" -->
-      <!-- title="Warning" -->
-      <!-- description="There was an error in signing up for an account. Please try again." -->
-      <!-- /> -->
+      <Alert :visible="displayCard" position="top-right" :color="cardColor" :title="cardTitle" :description="cardMessage" />
     </div>
     <div class="w-full flex flex-wrap">
       <!-- Register Section -->
@@ -46,6 +40,17 @@
                 type="email"
                 id="email"
                 placeholder="your@email.com"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+
+            <div class="flex flex-col pt-4">
+              <label for="email" class="text-lg">Phone Number</label>
+              <input
+                v-model="phone_number"
+                type="text"
+                id="phone_number"
+                placeholder="91234567"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
               />
             </div>
@@ -102,13 +107,13 @@
 </template>
 
 <script>
-import axios from "axios";
 import NavbarComponent from "../components/Navbar.vue";
 import TestimonialComponent from "../components/Testimonial";
 import ItemsCarousel from "../components/ItemsCarousel";
 import FooterComponent from "../components/Footer";
 import ButtonComponent from "../components/Button";
 import SplitComponent from "../components/Split";
+import Alert from "../components/Alert";
 
 const url = `https://api.unsplash.com/photos/random/?client_id=${process.env.UNSPLASH_API_KEY}`;
 
@@ -117,41 +122,89 @@ export default {
     return {
       name: "",
       email: "",
+      phone_number: "",
       password: "",
+      displayCard: false,
+      cardColor: "",
+      cardTitle: "",
+      cardMessage: "",
       errors: [],
     };
   },
   methods: {
     async register() {
       try {
-        await axios.post("http://localhost:5003/user/signup/user", {
-          body: {
-            name: this.name,
-            email: this.email,
-            password: this.password,
-          },
-        });
-        // if (response.status === 201) {
-        // window.location.replace = "/pages/index.vue";
-        // } else {
-        // this.handleAlert();
-        // }
+        await this.$axios.$post(
+          'http://localhost:5003/user/signup/user',
+          {
+            "email": this.email,
+            "fullname": this.name,
+            "phone_number": this.phone_number,
+            "user_password": this.password,
+          }
+        )
 
-        // console.log("hi");
-        // console.log(this.name);
-        // console.log(this.email);
-        // console.log(this.password);
-      } catch (e) {
-        this.errors.push(e);
+        this.handleDisplayCard('success', 'Registration successful')
+      } catch (error) {
+        this.handleDisplayCard('error', error.response.message)
       }
     },
 
-    // handleAlert() {
-    // this.alertVisible = true;
-    // setTimeout(() => {
-    // this.alertVisible = false;
-    // }, 4000);
-    // },
+    async login() {
+      try {
+        const response = await this.$axios.$post(
+          'http://localhost:5003/user/login',
+          {
+            "email": this.email,
+            "user_password": this.password,
+          }
+        )
+
+        this.handleCreateDataStore(response)
+        this.$router.push('/')
+      } catch(error) {
+        console.log(error)
+      }
+    },
+
+    handleDisplayCard(type, message) {
+      this.displayCard = true
+      this.cardMessage = message
+      switch (type) {
+        case 'success':
+          this.cardColor = 'success'
+          this.cardTitle = 'Welcome'
+          break
+
+        case 'error':
+          this.cardColor = 'error'
+          this.cardTitle = 'Registration Unsuccessful'
+          break
+      }
+
+      setTimeout(() => {
+        if (type === 'success') {
+          this.displayCard = false;
+          this.login()
+        }
+      }, 3000)
+    },
+
+    handleCreateDataStore(response) {
+      const userType = response.user_type
+      const userId = response.user_details.user_id
+      const fullname = response.user_details.fullname
+
+      this.$auth.$state = {
+        'user_type': userType,
+        'user': {
+          'user_id': userId,
+          'fullname': fullname
+        },
+        'cart': []
+      }
+    }
+
   },
 
   name: "landing-page",
@@ -163,6 +216,7 @@ export default {
     ButtonComponent,
     ItemsCarousel,
     SplitComponent,
+    Alert
   },
 };
 </script>

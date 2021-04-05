@@ -1,13 +1,7 @@
 <template>
   <body class="bg-white font-family-karla h-screen">
     <div>
-      <!-- <Alert -->
-      <!-- :visible="alertVisible" -->
-      <!-- position="top-right" -->
-      <!-- color="warning" -->
-      <!-- title="Warning" -->
-      <!-- description="There was an error in logging in. Please try again." -->
-      <!-- /> -->
+      <Alert :visible="displayCard" position="top-right" :color="cardColor" :title="cardTitle" :description="cardMessage" />
     </div>
     <div class="w-full flex flex-wrap">
       <!-- Login Section -->
@@ -78,7 +72,6 @@
   </body>
 </template>
 <script>
-import axios from "axios";
 import Alert from "../components/Alert";
 
 import NavbarComponent from "../components/Navbar.vue";
@@ -96,53 +89,86 @@ export default {
       email: "",
       password: "",
       errors: [],
+      displayCard: false,
+      cardColor: "",
+      cardTitle: "",
+      cardMessage: "",
     };
   },
 
   methods: {
     async login() {
       try {
-        axios
-          .post(
-            "http://localhost:5003/user/login",
-            {
-              email: "",
-              password: "",
-            },
-            {
-              headers: {
-                "content-type": "application/json",
-              },
-            }
-          )
-          .then((response) => {
-            console.log("Success! " + JSON.stringify(response.data));
-          })
-          .catch((error) => {
-            console.log("Failure! " + JSON.stringify(error));
-          });
-      } catch (e) {
-        console.log(e);
+        const response = await this.$axios.$post(
+          "http://localhost:5003/user/login",
+          {
+            email: this.email,
+            user_password: this.password,
+          }
+        )
+
+        this.handleDisplayCard('success', 'Login successful!', response['user_type'])
+        this.handleCreateDataStore(response)
+      } catch(error) {
+        const errorResponse = error.response.data
+        this.handleDisplayCard('error', errorResponse.message, null)
+      }
+    },
+
+    handleDisplayCard(type, message, userType) {
+      this.displayCard = true
+      this.cardMessage = message
+      switch (type) {
+        case 'success':
+          this.cardColor = 'success'
+          this.cardTitle = 'Welcome'
+          break
+
+        case 'error':
+          this.cardColor = 'error'
+          this.cardTitle = 'Login Failed'
+          break
       }
 
-      // handleAlert() {
-      // this.alertVisible = true;
-      // setTimeout(() => {
-      // this.alertVisible = false;
-      // }, 4000);
-      // },
+      setTimeout(() => {
+        this.displayCard = false;
+
+        if (type === 'success') {
+          this.handleRedirect(userType)
+        }
+      }, 3000)
     },
+
+    handleCreateDataStore(response) {
+      const userType = response.user_type
+      const userId = response.user_details.user_id
+      const fullname = response.user_details.fullname
+
+      this.$auth.$state = {
+        'user_type': userType,
+        'user': {
+          'user_id': userId,
+          'fullname': fullname
+        },
+        'cart': []
+      }
+
+    handleRedirect(userType) {
+      if (userType === 'admin') this.$router.push('/admin')
+      else this.$router.push('/')
+    }
+  },
 
     name: "landing-page",
 
-    components: {
-      NavbarComponent,
-      TestimonialComponent,
-      FooterComponent,
-      ButtonComponent,
-      ItemsCarousel,
-      SplitComponent,
-    },
+  components: {
+    NavbarComponent,
+    TestimonialComponent,
+    FooterComponent,
+    ButtonComponent,
+    ItemsCarousel,
+    SplitComponent,
+    Alert
   },
 };
 </script>
