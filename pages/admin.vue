@@ -36,6 +36,11 @@
                 >
                   Status
                 </th>
+                <th
+                  class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider"
+                >
+                  Status Change
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -86,6 +91,46 @@
                     <span class="relative">{{post.status}}</span>
                   </span>
                 </td>
+
+                <!--button to change status -->
+                <!-- pending -->
+                <td v-if="post.status == 'pending'" class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <button
+                    class="bg-blue-500 text-white active:bg-blue-600  text-sm px-3 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    @click="set_shipping(post.item_id)">
+                    Set to Shipping
+                  </button>
+                  <button
+                    class="bg-gray-600 text-white active:bg-blue-600  text-sm px-3 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    @click="set_archive(post.item_id)">
+                    Set to Archive
+                  </button>
+                </td>
+                <!-- shipping -->
+                <td v-else-if="post.status == 'shipping'" class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <button
+                    class="bg-green-500 text-white active:bg-blue-600  text-sm px-3 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    @click="set_completed(post.item_id)">
+                    Set to Completed
+                  </button>
+                </td>
+                <!-- completed -->
+                <td v-else-if="post.status == 'archived'" class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  archived
+                </td>
+
+                <td v-else class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <!-- <button
+                    class="bg-green-500 text-white active:bg-blue-600  text-sm px-3 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    @click="set_archive()">
+                    Set to Archive
+                  </button> -->
+                  completed
+                </td>
               </tr>
             
             </tbody>
@@ -93,6 +138,7 @@
         </div>
 
         <div>
+          <!-- button -->
           <button
             class="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
             type="button"
@@ -140,11 +186,13 @@
                                   class="block text-sm font-medium text-gray-700"
                                   >Item Name</label
                                 >
+                                <!-- input for item_name -->
                                 <input
                                   type="text"
                                   name="first_name"
                                   id="first_name"
                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                  v-model="item_name"
                                 />
                               </div>
 
@@ -154,11 +202,13 @@
                                   class="block text-sm font-medium text-gray-700"
                                   >Category</label
                                 >
+                                <!-- input for category -->
                                 <input
                                   type="text"
                                   name="last_name"
                                   id="last_name"
                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                  v-model="category"
                                 />
                               </div>
 
@@ -168,11 +218,13 @@
                                   class="block text-sm font-medium text-gray-700"
                                   >Item Price</label
                                 >
+                                <!-- input for item price -->
                                 <input
                                   type="text"
                                   name="first_name"
                                   id="first_name"
                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                  v-model="item_price"
                                 />
                               </div>
 
@@ -182,11 +234,13 @@
                                   class="block text-sm font-medium text-gray-700"
                                   >Image URL</label
                                 >
+                                <!-- input for image_url -->
                                 <input
                                   type="text"
                                   name="last_name"
                                   id="last_name"
                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                  v-model="image_url"
                                 />
                               </div>
 
@@ -196,11 +250,13 @@
                                   class="block text-sm font-medium text-gray-700"
                                   >Item Description</label
                                 >
+                                <!-- input for item_desc -->
                                 <input
                                   type="text"
                                   name="street_address"
                                   id="street_address"
                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                  v-model="item_desc"
                                 />
                               </div>
 
@@ -212,11 +268,13 @@
                                   class="block text-sm font-medium text-gray-700"
                                   >Item Quantity</label
                                 >
+                                <!-- input for item_qty-->
                                 <input
                                   type="number"
                                   name="city"
                                   id="city"
                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                  v-model="item_qty"
                                 />
                               </div>
 
@@ -228,11 +286,13 @@
                                   class="block text-sm font-medium text-gray-700"
                                   >Current Count</label
                                 >
+                                <!-- input for current count -->
                                 <input
                                   type="number"
                                   name="state"
                                   id="state"
                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                  v-model="current_count"
                                 />
                               </div>
 
@@ -244,11 +304,13 @@
                                   class="block text-sm font-medium text-gray-700"
                                   >Shipping Count</label
                                 >
+                                <!-- input for shipping count -->
                                 <input
                                   type="number"
                                   name="postal_code"
                                   id="postal_code"
                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                  v-model="shipping_count"
                                 />
                               </div>
                               <div class="col-span-6">
@@ -257,11 +319,13 @@
                                   class="block text-sm font-medium text-gray-700"
                                   >Expiry Date</label
                                 >
+                                <!-- input for expiry -->
                                 <input
                                   type="date"
                                   name="date"
                                   id="date"
                                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                  v-model="expiry"
                                 />
                               </div>
                             </div>
@@ -274,6 +338,7 @@
                 <div
                   class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b"
                 >
+                  <!-- close button -->
                   <button
                     class="text-red-500 border border-solid border-red-500 hover:bg-red-500 hover:text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
@@ -281,10 +346,12 @@
                   >
                     Close
                   </button>
+
+                  <!-- handleSubmit button-->
                   <button
                     class="text-red-500 font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    v-on:click="toggleModal()"
+                    v-on:click="handleSubmit()"
                   >
                     Confirm
                   </button>
@@ -311,13 +378,93 @@ export default {
     return {
       showModal: false,
       posts:[],
-      errors:[]
+      errors:[],
+      item_name:'',
+      category:'',
+      item_price:'',
+      image_url:'',
+      item_desc:'',
+      item_qty:'',
+      current_count:'',
+      shipping_count:'',
+      expiry:'',
     };
   },
   methods: {
+    async set_shipping(item_id){
+      console.log('entering shipping');
+      console.log(item_id)
+      try{
+        const ip = await this.$axios.$put(`http://localhost:5001/item/setpendingstatus/${item_id}`)
+        console.log(ip)
+        location.reload();
+       
+      }catch(error){
+        console.log('failed status change from pending to shipping')
+      }
+      // END
+    },
+    async set_archive(item_id){
+      console.log('entering set_archive');
+      console.log(item_id)
+      try{
+        const ip = await this.$axios.$put(`http://localhost:5001/item/setarchivestatus/${item_id}`)
+        console.log(ip)
+        location.reload();
+       
+      }catch(error){
+        console.log('failed status change from pending to archive')
+      }
+      // END
+      //end
+    },
+    async set_completed(item_id){
+      console.log('entering set_completed');
+      console.log(item_id)
+      try{
+        const ip = await this.$axios.$put(`http://localhost:5001/item/setshippingstatus/${item_id}`)
+        console.log(ip)
+        location.reload();
+       
+      }catch(error){
+        console.log('failed status change from shipping to complete')
+      }
+      // END
+      //end
+    },
     toggleModal: function() {
+      console.log('hi modal');
       this.showModal = !this.showModal;
     },
+    // items pics
+    async postItem() {
+      console.log('entering postItem')
+      try{
+        const ip = await this.$axios.$post(
+          `http://localhost:5001/item`, 
+          {
+            "category": this.category,
+            "item_name": this.item_name,
+            "item_qty": this.item_qty,
+            "item_desc":this.item_desc,
+            "item_price": this.item_price,
+            "shipping_count": this.shipping_count,
+            "expiry": this.expiry,
+            "image_url": [this.image_url]
+          }
+        )
+        location.reload();
+        console.log(ip)
+      }catch(error){
+        console.log('shit')
+      }
+    },
+
+    handleSubmit:function(){
+      console.log("entering submit");
+      this.toggleModal();
+      this.postItem();
+    }
   },
   // items pics
   async beforeCreate() {
@@ -325,8 +472,9 @@ export default {
     const ip = await this.$axios.$get(`http://localhost:5001/item/all`)
     
     this.posts = ip.items
-    console.log(this.posts)
-  }
-
-};
+    // console.log(this.posts)
+  },
+  
+  
+}
 </script>
