@@ -17,10 +17,10 @@
             <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
               <div class="px-6">
                 <h1 class="text-white font-semibold text-5xl">
-                  Something something crowdsource for free shipping
+                  A Fair Share
                 </h1>
                 <p class="mt-4 text-lg text-gray-300">
-                  Lorem ipsum crowdsourcing for free shipping
+                  Where everyone pays a fair share for the shipping costs!
                 </p>
               </div>
               <div class="pt-10">
@@ -64,7 +64,7 @@
                   >
                     <i class="fas fa-award"></i>
                   </div>
-                  <h6 class="text-xl font-semibold">Crowdsource Shipping</h6>
+                  <h6 class="text-xl font-semibold">Crowdsourced Shipping</h6>
                   <p class="mt-2 mb-4 text-gray-600">
                     Shopping online can never be more affordable now that you are able to share shipping with people from your region.
                   </p>

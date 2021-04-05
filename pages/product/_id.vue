@@ -189,7 +189,7 @@
                   type="number"
                   v-number-only
                   id="quantity"
-                  :value="quantity"
+                  v-model="quantity"
                   autocomplete="off"
                   class="border border-gray-300 rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-widest"
                 />
