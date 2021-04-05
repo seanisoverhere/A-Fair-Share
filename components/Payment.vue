@@ -1,5 +1,5 @@
 <template>
- <div class="col-span-1 lg:col-span-6">
+ <div class="mt-8 col-span-1 lg:col-span-6">
   <h4 class="text-3xl text-gray-700 mb-5">Payment information</h4>
   <div class="p-10 rounded-md shadow-md bg-white">
    <div v-if="cardComponent" class="mb-6">
@@ -92,7 +92,7 @@
     </div>
    </div>
    <div class="mb-6 text-right">
-    <span class="text-right font-bold">{{ total }} USD</span>
+    <span class="text-right font-bold">${{ total }} SGD</span>
    </div>
    <div>
     <button @click="finishPayment"

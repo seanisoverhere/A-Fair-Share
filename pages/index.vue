@@ -127,7 +127,7 @@
               <h2 class="text-3xl font-medium title-font pb-10">
                 Hot Items For You
               </h2>
-              <div class="flex mb-5 -mt-5 justify-center">
+              <div class="flex mb-2 -mt-5 justify-center">
                 <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
               </div>
               <div data-aos="fade-up" data-aos-delay="400">
@@ -135,11 +135,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section>
-        <div>
-          <split-component></split-component>
         </div>
       </section>
       <testimonial-component></testimonial-component>
@@ -153,7 +148,6 @@ import TestimonialComponent from "../components/Testimonial";
 import ItemsCarousel from "../components/ItemsCarousel";
 import FooterComponent from "../components/Footer";
 import ButtonComponent from "../components/Button";
-import SplitComponent from "../components/Split";
 
 const url = `https://api.unsplash.com/photos/random/?client_id=${process.env.UNSPLASH_API_KEY}`;
 
@@ -170,7 +164,6 @@ export default {
     FooterComponent,
     ButtonComponent,
     ItemsCarousel,
-    SplitComponent
   },
   async beforeCreate() {
     // const ip = await this.$axios.$get(url)
