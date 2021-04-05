@@ -163,7 +163,7 @@
                     Add a new item to store
                   </h3>
                   <button
-                    c lass="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     v-on:click="toggleModal()"
                   >
                     <span
@@ -472,7 +472,9 @@ export default {
     const ip = await this.$axios.$get(`http://localhost:5001/item/all`)
     
     this.posts = ip.items
-  }
-
-};
+    // console.log(this.posts)
+  },
+  
+  
+}
 </script>
