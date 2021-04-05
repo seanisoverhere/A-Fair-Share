@@ -95,6 +95,9 @@ export default {
       cardMessage: "",
     };
   },
+  beforeCreate() {
+    this.$auth.$state = {}
+  },
 
   methods: {
     async login() {
