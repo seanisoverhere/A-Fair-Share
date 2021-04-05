@@ -10,10 +10,10 @@
 </template>
 
 <script>
+import NavbarComponent from "../components/Navbar.vue";
 import Payment from "../components/Payment";
 import Summary from "../components/Summary";
 import Alert from "../components/Alert";
-import NavbarComponent from "../components/Navbar.vue";
 
 export default {
   name: "CheckoutPage",
