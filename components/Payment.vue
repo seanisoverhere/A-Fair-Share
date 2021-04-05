@@ -1,108 +1,109 @@
 <template>
- <div class="mt-8 col-span-1 lg:col-span-6">
-  <h4 class="text-3xl text-gray-700 mb-5">Payment information</h4>
-  <div class="p-10 rounded-md shadow-md bg-white">
-   <div v-if="cardComponent" class="mb-6">
-    <Card
-     :fields="fields"
-     :labels="formData"
-     :isCardNumberMasked="isCardNumberMasked"
-     :randomBackgrounds="randomBackgrounds"
-     :backgroundImage="backgroundImage"
-    />
-   </div>
-   <div class="mb-6">
-    <label class="block mb-3 text-gray-600" for="">Name on card</label>
-    <input
-     type="text"
-     :id="fields.cardName"
-     v-letter-only
-     @input="changeName"
-     :value="formData.cardName"
-     data-card-field
-     autocomplete="off"
-     class="border border-gray-500 rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-wider"
-    />
-   </div>
-   <div class="mb-6">
-    <label class="block mb-3 text-gray-600" for="">Card number</label>
-    <input
-     type="tel"
-     :id="fields.cardNumber"
-     @input="changeNumber"
-     @focus="focusCardNumber"
-     @blur="blurCardNumber"
-     :value="formData.cardNumber"
-     :maxlength="cardNumberMaxLength"
-     data-card-field
-     autocomplete="off"
-     class="border border-gray-500 rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-widest"
-    />
-   </div>
-   <div class="mb-6 flex flex-wrap -mx-3w-full">
-    <div class="w-2/3 px-3">
-     <label class="block mb-3 text-gray-600" for="">Expiraion date</label>
-     <div class="flex">
-      <select
-       class="border border-gray-500 rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-widest mr-6"
-       :id="fields.cardMonth"
-       v-model="formData.cardMonth"
-       @change="changeMonth"
-       data-card-field
-      >
-       <option value disabled selected>Month</option>
-       <option
-        v-bind:value="n < 10 ? '0' + n : n"
-        v-for="n in 12"
-        v-bind:disabled="n < minCardMonth"
-        v-bind:key="n"
-        >{{ generateMonthValue(n) }}</option
-       >
-      </select>
-      <select
-       class="border border-gray-500 rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-widest"
-       :id="fields.cardYear"
-       v-model="formData.cardYear"
-       @change="changeYear"
-       data-card-field
-      >
-       <option value disabled selected>Year</option>
-       <option
-        v-bind:value="$index + minCardYear"
-        v-for="(n, $index) in 12"
-        v-bind:key="n"
-        >{{ $index + minCardYear }}</option
-       >
-      </select>
-     </div>
+  <div class="mt-8 col-span-1 lg:col-span-6">
+    <h4 class="text-3xl text-gray-700 mb-5">Payment information</h4>
+    <div class="p-10 rounded-md shadow-md bg-white">
+      <div v-if="cardComponent" class="mb-6">
+        <Card
+          :fields="fields"
+          :labels="formData"
+          :isCardNumberMasked="isCardNumberMasked"
+          :randomBackgrounds="randomBackgrounds"
+          :backgroundImage="backgroundImage"
+        />
+      </div>
+      <div class="mb-6">
+        <label class="block mb-3 text-gray-600" for="">Name on card</label>
+        <input
+          type="text"
+          :id="fields.cardName"
+          v-letter-only
+          @input="changeName"
+          :value="formData.cardName"
+          data-card-field
+          autocomplete="off"
+          class="border border-gray-500 rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-wider"
+        />
+      </div>
+      <div class="mb-6">
+        <label class="block mb-3 text-gray-600" for="">Card number</label>
+        <input
+          type="tel"
+          :id="fields.cardNumber"
+          @input="changeNumber"
+          @focus="focusCardNumber"
+          @blur="blurCardNumber"
+          :value="formData.cardNumber"
+          :maxlength="cardNumberMaxLength"
+          data-card-field
+          autocomplete="off"
+          class="border border-gray-500 rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-widest"
+        />
+      </div>
+      <div class="mb-6 flex flex-wrap -mx-3w-full">
+        <div class="w-2/3 px-3">
+          <label class="block mb-3 text-gray-600" for="">Expiraion date</label>
+          <div class="flex">
+            <select
+              class="border border-gray-500 rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-widest mr-6"
+              :id="fields.cardMonth"
+              v-model="formData.cardMonth"
+              @change="changeMonth"
+              data-card-field
+            >
+              <option value disabled selected>Month</option>
+              <option
+                v-bind:value="n < 10 ? '0' + n : n"
+                v-for="n in 12"
+                v-bind:disabled="n < minCardMonth"
+                v-bind:key="n"
+                >{{ generateMonthValue(n) }}</option
+              >
+            </select>
+            <select
+              class="border border-gray-500 rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-widest"
+              :id="fields.cardYear"
+              v-model="formData.cardYear"
+              @change="changeYear"
+              data-card-field
+            >
+              <option value disabled selected>Year</option>
+              <option
+                v-bind:value="$index + minCardYear"
+                v-for="(n, $index) in 12"
+                v-bind:key="n"
+                >{{ $index + minCardYear }}</option
+              >
+            </select>
+          </div>
+        </div>
+        <div class="w-1/3 px-3">
+          <label class="block mb-3 text-gray-600" for="">CVC</label>
+          <input
+            type="tel"
+            v-number-only
+            :id="fields.cardCvv"
+            maxlength="4"
+            :value="formData.cardCvv"
+            @input="changeCvv"
+            data-card-field
+            autocomplete="off"
+            class="border border-gray-500 rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-widest"
+          />
+        </div>
+      </div>
+      <div class="mb-6 text-right">
+        <span class="text-right font-bold">${{ total }} SGD</span>
+      </div>
+      <div>
+        <button
+          @click="finishPayment"
+          class="w-full text-ceenter px-4 py-3 bg-blue-500 rounded-md shadow-md text-white font-semibold"
+        >
+          Confirm payment
+        </button>
+      </div>
     </div>
-    <div class="w-1/3 px-3">
-     <label class="block mb-3 text-gray-600" for="">CVC</label>
-     <input
-      type="tel"
-      v-number-only
-      :id="fields.cardCvv"
-      maxlength="4"
-      :value="formData.cardCvv"
-      @input="changeCvv"
-      data-card-field
-      autocomplete="off"
-      class="border border-gray-500 rounded-md inline-block py-2 px-3 w-full text-gray-600 tracking-widest"
-     />
-    </div>
-   </div>
-   <div class="mb-6 text-right">
-    <span class="text-right font-bold">${{ total }} SGD</span>
-   </div>
-   <div>
-    <button @click="finishPayment"
-     class="w-full text-ceenter px-4 py-3 bg-blue-500 rounded-md shadow-md text-white font-semibold"
-    >
-     Confirm payment
-    </button>
-   </div>
   </div>
- </div>
 </template>
 <script>
 import Card from "./Card";
@@ -121,7 +122,7 @@ export default {
           event.preventDefault();
         }
         el.addEventListener("keypress", checkValue);
-      }
+      },
     },
     "letter-only": {
       bind(el) {
@@ -132,8 +133,8 @@ export default {
           return true;
         }
         el.addEventListener("keypress", checkValue);
-      }
-    }
+      },
+    },
   },
   props: {
     total: Number,
@@ -145,34 +146,36 @@ export default {
           cardNumber: "",
           cardMonth: "",
           cardYear: "",
-          cardCvv: ""
+          cardCvv: "",
         };
-      }
+      },
     },
     backgroundImage: [String, Object],
     randomBackgrounds: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   components: {
-    Card
+    Card,
   },
 
   data() {
     return {
       cardComponent: true,
+      user_id: "",
+      items: [],
       fields: {
         cardNumber: "v-card-number",
         cardName: "v-card-name",
         cardMonth: "v-card-month",
         cardYear: "v-card-year",
-        cardCvv: "v-card-cvv"
+        cardCvv: "v-card-cvv",
       },
       minCardYear: new Date().getFullYear(),
       isCardNumberMasked: true,
       mainCardNumber: this.cardNumber,
-      cardNumberMaxLength: 19
+      cardNumberMaxLength: 19,
     };
   },
   computed: {
@@ -180,20 +183,24 @@ export default {
       if (this.formData.cardYear === this.minCardYear)
         return new Date().getMonth() + 1;
       return 1;
-    }
+    },
   },
   watch: {
     cardYear() {
       if (this.formData.cardMonth < this.minCardMonth) {
         this.formData.cardMonth = "";
       }
-    }
+    },
+  },
+  beforeCreate() {
+    this.user_id = this.$auth.$state.user.user_id
   },
   mounted() {
     this.maskCardNumber();
     if (this.cardComponent === true) {
       this.$emit("handle-card");
     }
+    
   },
   methods: {
     generateMonthValue(n) {
@@ -286,7 +293,7 @@ export default {
       let arr = this.formData.cardNumber.split("");
       arr.forEach((element, index) => {
         if (index > 4 && index < 14 && element.trim() !== "") {
-          arr[index] = "*";
+          // arr[index] = "*";
         }
       });
       this.formData.cardNumber = arr.join("");
@@ -306,31 +313,65 @@ export default {
       }
     },
 
+    async finishPayment() {
+      try {
+        // console.log("----------Test---------")
+        // console.log(this.user_id)
+        // console.log("----------State---------")
+        // console.log(this.$auth.$state.user_id)
+        // const user_id = this.$auth.$state.user_id;
+        // console.log("----------Variable---------")
+        // console.log(user_id)
+        // const items = this.$auth.$state.$items;
+        const response = await this.$axios.post(
+          "http://localhost:5100/place_order",
+          {
+            user_id: this.user_id,
+            items: [
+              {
+                item_id: "18jTLCgAibIuVeS",
+                quantity: "2",
+              },
+            ],
+            amount: this.total,
+            payment_details: {
+              card_number: this.formData.cardNumber,
+              expiry_month: this.formData.cardMonth,
+              expiry_year: this.formData.cardYear.toString().substring(2),
+              cvv: this.formData.cardCvv,
+              cardholder_name: this.formData.cardName,
+            },
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
     // finishPayment() {
     //   this.checkout()
     // },
 
     // async postCreditCard(){
-      // const response = await this.$axios.$post({
-      //   url: 'http://localhost:5003/user/jMjvdKfJsyhxmDE/credit_cards/add_credit_card',
-      //   headers: {
-      //     "content-type": "application/json",
-      //     }, 
-      //   data:  {
-      //     cardName: this.cardName,
-      //     cardNumber: this.cardNumber,
-      //     cardMonth: this.cardMonth,
-      //     cardYear: this.cardYear,
-      //     cardCvv: this.cardCvv
+    // const response = await this.$axios.$post({
+    //   url: 'http://localhost:5003/user/jMjvdKfJsyhxmDE/credit_cards/add_credit_card',
+    //   headers: {
+    //     "content-type": "application/json",
+    //     },
+    //   data:  {
+    //     cardName: this.cardName,
+    //     cardNumber: this.cardNumber,
+    //     cardMonth: this.cardMonth,
+    //     cardYear: this.cardYear,
+    //     cardCvv: this.cardCvv
 
-          // cardholder_name: this.cardName,
-          // card_number: this.cardNumber,
-          // expiry_month: this.cardMonth,
-          // expiry_year: this.cardYear,
-          // cvv: this.cardCvv
+    // cardholder_name: this.cardName,
+    // card_number: this.cardNumber,
+    // expiry_month: this.cardMonth,
+    // expiry_year: this.cardYear,
+    // cvv: this.cardCvv
 
-      
-    // },    
-  }
-}     
+    // },
+  },
+};
 </script>

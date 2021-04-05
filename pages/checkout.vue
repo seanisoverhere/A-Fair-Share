@@ -10,10 +10,10 @@
 </template>
 
 <script>
+import NavbarComponent from "../components/Navbar.vue";
 import Payment from "../components/Payment";
 import Summary from "../components/Summary";
 import Alert from "../components/Alert";
-import NavbarComponent from "../components/Navbar.vue";
 
 export default {
   name: "CheckoutPage",
@@ -64,38 +64,7 @@ export default {
     },
     handleCard() {
       this.isCard = true;
-    },
-
-    async finishPayment(){
-      try{
-        const cart = [{"item_id": "33VQKTsWd3p0ByI", "qty": "1"}, {"item_id": "6Gvzm38mwfdWktu", "qty": "1"}]
-        const user_id = "Qi4Ho6a9OJuwZSB"
-        const amount ="50.60"
-        const response = await this.$axios.$post(
-          "http://localhost:5100/place_order", 
-          { 
-            user_id: user_id,
-            items: cart,
-            amount: amount,
-            payment_details: {
-              cardholder_name: this.cardName,
-              card_number: this.cardNumber,
-              expiry_month: this.cardMonth,
-              expiry_year: this.cardYear, 
-              cvv: this.cardCvv
-              }
-            
-          }
-        )
-      } catch(error) {
-        const response = error.response.data
-        this.handleDisplayCard('error', response.message)
-      }
-
     }
-    // finishPayment() {
-    //   this.checkout()
-    // },
   }
 };
 </script>
