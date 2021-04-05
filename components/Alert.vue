@@ -1,5 +1,5 @@
 <template>
-  <div v-if="visible" :class="[userPosition, userColor]" class="w-full lg:w-3/12 border-l-4 p-4" role="alert">
+  <div v-if="visible" :class="[userPosition, userColor]" class="w-full lg:w-3/12 border-l-4 p-4 z-50" role="alert">
     <p class="font-bold">{{ title }}</p>
     <p>{{ description }}</p>
   </div>

@@ -11,15 +11,12 @@
 import Item from "./Item";
 export default {
   name: "Summary",
-  props: {
-    items: Array
-  },
   components: {
     Item
   },
   data() {
     return {
-
+      items: this.$auth.$state.cart
     };
   }
 };
