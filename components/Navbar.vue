@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between px-4 py-3 sm:p-0">
       
       <div>
-        <img class="h-8" src="../assets/img/logo.svg" alt="Workcation">
+        <img class="h-8" src="../assets/img/no_logo.svg" alt="Workcation">
       </div>
       <nuxt-link to="/">
         <div class="block px-2 py-1 text-black font-semibold">A-Fair-Share</div>
@@ -19,7 +19,7 @@
     </div>
     <nav :class="isOpen ? 'block' : 'hidden'" class="px-2 pt-2 pb-4 sm:flex sm:p-0">
       <nuxt-link to="/hot" class="block px-2 py-1 text-black font-semibold rounded hover:bg-gray-200">Hot Items</nuxt-link>
-      <nuxt-link to="/new" class="mt-1 block px-2 py-1 text-black font-semibold rounded hover:bg-gray-200 sm:mt-0 sm:ml-2">New Arrivals</nuxt-link>
+      <nuxt-link to="/checkout" class="mt-1 block px-2 py-1 text-black font-semibold rounded hover:bg-gray-200 sm:mt-0 sm:ml-2">Checkout</nuxt-link>
       <nuxt-link to="/login" class="mt-1 block px-2 py-1 text-black font-semibold rounded hover:bg-gray-200 sm:mt-0 sm:ml-2">Sign In</nuxt-link>
     </nav>
   </header>
