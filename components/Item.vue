@@ -1,9 +1,9 @@
 <template>
   <div class="grid grid-cols-8 overflow-hidden col-gap-6 mb-5">
-    <img class="block col-span-3 w-full h-20 rounded bg-gray-600" src alt />
+    <img class="block col-span-3 w-28 h-20 rounded" :src="item.image_url" />
     <div class="col-span-5">
       <div class="flex">
-        <h6 class="text-sm font-semibold text-gray-800 flex-grow">{{ item.title }}</h6>
+        <h6 class="text-sm font-semibold text-gray-800 flex-grow">{{ item.item_name }}</h6>
         <button>
           <svg class="w-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path
@@ -14,8 +14,11 @@
       </div>
       <p
         class="text-xs truncate text-gray-600"
-      >{{item.description}}</p>
-      <span class="text-sm text-gray-800">{{ item.price }} USD</span>
+      >{{item.item_desc }}</p>
+      <span class="text-sm text-gray-800">$ {{ item.price }} SGD</span>
+      <p class="mt-2 text-xs truncate text-gray-600">
+        Quantity: {{item.quantity}}
+      </p>
     </div>
   </div>
 </template>

@@ -155,6 +155,7 @@ export default {
       type: Boolean,
       default: true,
     },
+    items: Array,
   },
   components: {
     Card,
@@ -191,9 +192,6 @@ export default {
         this.formData.cardMonth = "";
       }
     },
-  },
-  beforeCreate() {
-    this.user_id = this.$auth.$state.user.user_id
   },
   mounted() {
     this.maskCardNumber();
@@ -326,13 +324,8 @@ export default {
         const response = await this.$axios.post(
           "http://localhost:5100/place_order",
           {
-            user_id: this.user_id,
-            items: [
-              {
-                item_id: "18jTLCgAibIuVeS",
-                quantity: "2",
-              },
-            ],
+            user_id: this.$auth.$state.user.user_id,
+            items: this.items,
             amount: this.total,
             payment_details: {
               card_number: this.formData.cardNumber,
@@ -343,35 +336,12 @@ export default {
             },
           }
         );
+
+        this.$router.push('/')
       } catch (error) {
         console.log(error);
       }
     },
-
-    // finishPayment() {
-    //   this.checkout()
-    // },
-
-    // async postCreditCard(){
-    // const response = await this.$axios.$post({
-    //   url: 'http://localhost:5003/user/jMjvdKfJsyhxmDE/credit_cards/add_credit_card',
-    //   headers: {
-    //     "content-type": "application/json",
-    //     },
-    //   data:  {
-    //     cardName: this.cardName,
-    //     cardNumber: this.cardNumber,
-    //     cardMonth: this.cardMonth,
-    //     cardYear: this.cardYear,
-    //     cardCvv: this.cardCvv
-
-    // cardholder_name: this.cardName,
-    // card_number: this.cardNumber,
-    // expiry_month: this.cardMonth,
-    // expiry_year: this.cardYear,
-    // cvv: this.cardCvv
-
-    // },
   },
 };
 </script>

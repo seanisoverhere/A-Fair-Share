@@ -197,7 +197,7 @@
             </div>
             <div class="flex">
               <span class="title-font font-medium text-2xl text-gray-900"
-                >$58.00</span
+                >${{post.item_price}}</span
               >
               <button
                 class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
@@ -267,6 +267,9 @@ export default {
             item_id: this.$route.params.id,
             item_name: this.post.item_name,
             quantity: this.quantity,
+            item_description: this.post.item_desc,
+            price: this.post.item_price,
+            image_url: this.image_url
         };
 
         const cart = this.$auth.$state.cart;
