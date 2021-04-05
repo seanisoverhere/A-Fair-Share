@@ -6,10 +6,10 @@
         class="relative pt-16 pb-32 flex content-center items-center justify-center"
         style="min-height: 70vh;"
       >
-        <div class="absolute top-0 w-full h-full bg-center bg-cover">
+        <div class="absolute top-0 w-full h-full bg-cover" :style='{ backgroundImage: `url(${imageURL})` }'>
           <span
             id="blackOverlay"
-            class="w-full h-full absolute opacity-75 bg-black"
+            class="w-full h-full absolute opacity-60 bg-black"
           ></span>
         </div>
         <div class="container pt-20 relative mx-auto">
@@ -166,10 +166,8 @@ export default {
     ItemsCarousel,
   },
   async beforeCreate() {
-    // const ip = await this.$axios.$get(url)
-    // console.log(ip.urls.full)
-    // this.imageURL = ip
-    // console.log(this.$auth.$state)
+    const ip = await this.$axios.$get(url)
+    this.imageURL = ip.urls.full
   },
 };
 </script>
