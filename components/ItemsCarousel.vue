@@ -1,6 +1,10 @@
 <template>
   <swiper class="swiper" :options="swiperOption">
-    <swiper-slide>Slide 1</swiper-slide>
+    <!-- HELPPP -->
+    <swiper-slide v-for="post of posts" :key="post.item_id">
+      <img src= {{post.image_url }}>
+    </swiper-slide>
+
     <swiper-slide>Slide 2</swiper-slide>
     <swiper-slide>Slide 3</swiper-slide>
     <swiper-slide>Slide 4</swiper-slide>
@@ -18,6 +22,7 @@
 
 
 <script>
+import axios from 'axios';
 export default {
   data() {
     return {
@@ -49,9 +54,23 @@ export default {
         keyboard: {
           enabled: true
         }
-      }
+      },
+      
+    posts:[],
+    errors:[]
+    }
+  },
+  // carousel
+  async created() {
+    try {
+      const response = await axios.get(`http://localhost:5001/item/all/pending`)
+      this.posts = response.data
+      console.log(this.posts)
+    } catch (e) {
+      this.errors.push(e)
     }
   }
+
 }
 </script>
 <style scoped>
@@ -68,7 +87,6 @@ export default {
   align-items: center;
   width: 200px;
   height: 350px;
-  background-image: linear-gradient(gray 100%, transparent 0);
 }
 
 </style>
