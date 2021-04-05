@@ -102,44 +102,47 @@ export default {
   methods: {
     async login() {
       try {
-        axios.post({
-          url: "http://localhost:5003/user/login",
-          headers: {
-            "content-type": "application/json",
-          },
-          data: {
-            email: this.email,
-            password: this.password,
-          },
-        });
-
-        // if (response.status === 200) {
-        // window.location.replace = "/pages/index.vue";
-        // } else {
-        // this.handleAlert();
-        // }
+        axios
+          .post(
+            "http://localhost:5003/user/login",
+            {
+              email: "",
+              password: "",
+            },
+            {
+              headers: {
+                "content-type": "application/json",
+              },
+            }
+          )
+          .then((response) => {
+            console.log("Success! " + JSON.stringify(response.data));
+          })
+          .catch((error) => {
+            console.log("Failure! " + JSON.stringify(error));
+          });
       } catch (e) {
-        this.errors.push(e);
+        console.log(e);
       }
+
+      // handleAlert() {
+      // this.alertVisible = true;
+      // setTimeout(() => {
+      // this.alertVisible = false;
+      // }, 4000);
+      // },
     },
 
-    // handleAlert() {
-    // this.alertVisible = true;
-    // setTimeout(() => {
-    // this.alertVisible = false;
-    // }, 4000);
-    // },
-  },
+    name: "landing-page",
 
-  name: "landing-page",
-
-  components: {
-    NavbarComponent,
-    TestimonialComponent,
-    FooterComponent,
-    ButtonComponent,
-    ItemsCarousel,
-    SplitComponent,
+    components: {
+      NavbarComponent,
+      TestimonialComponent,
+      FooterComponent,
+      ButtonComponent,
+      ItemsCarousel,
+      SplitComponent,
+    },
   },
 };
 </script>
