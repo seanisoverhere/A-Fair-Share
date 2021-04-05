@@ -152,14 +152,15 @@ export default {
         },
         'cart': []
       }
+    },
 
     handleRedirect(userType) {
-      if (userType === 'admin') this.$router.push('/admin')
+      if (userType === 'admin') this.$router.push('/admin') 
       else this.$router.push('/')
     }
   },
 
-    name: "landing-page",
+  name: "landing-page",
 
   components: {
     NavbarComponent,
@@ -170,7 +171,8 @@ export default {
     SplitComponent,
     Alert
   },
-};
+}
+
 </script>
 
 <style scoped></style>
