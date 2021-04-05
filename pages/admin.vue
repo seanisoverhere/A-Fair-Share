@@ -316,7 +316,6 @@ export default {
     const ip = await this.$axios.$get(`http://localhost:5001/item/all`)
     
     this.posts = ip.items
-    console.log(this.posts)
   }
 
 };
