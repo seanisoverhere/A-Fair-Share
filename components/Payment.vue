@@ -106,6 +106,8 @@
 </template>
 <script>
 import Card from "./Card";
+// import axios from "axios";
+
 export default {
   name: "Payment",
   directives: {
@@ -156,6 +158,7 @@ export default {
   components: {
     Card
   },
+
   data() {
     return {
       cardComponent: true,
@@ -302,9 +305,37 @@ export default {
         this.unMaskCardNumber();
       }
     },
+
     finishPayment() {
-      this.$emit("change-parent");
-    }
+      this.postCreditCard()
+    },
+
+    async postCreditCard(){
+      const response = await this.$axios.$post({
+        url: 'http://localhost:5003/user/Qi4Ho6a9OJuwZSB/credit_cards/add_credit_card',
+        headers: {
+          "content-type": "application/json",
+          },
+        data:  {
+          // cardName: this.cardName,
+          // cardNumber: this.cardNumber,
+          // cardMonth: this.cardMonth,
+          // cardYear: this.cardYear,
+          // cardCvv: this.cardCvv
+
+          cardholder_name: this.cardName,
+          card_number: this.cardNumber,
+          expiry_month: this.cardMonth,
+          expiry_year: this.cardYear,
+          cvv: this.cardCvv
+          }
+        })
+    console.log(response)
+
   }
-};
+  
+  }
+}
 </script>
+
+    
