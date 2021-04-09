@@ -337,7 +337,7 @@ export default {
           }
         );
 
-        this.$emit(handle-alert)
+        this.$emit("handle-alert")
       } catch (error) {
         console.log(error);
       }
