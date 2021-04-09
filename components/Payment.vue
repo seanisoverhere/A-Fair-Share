@@ -337,7 +337,7 @@ export default {
           }
         );
 
-        this.$router.push('/')
+        this.$emit(handle-alert)
       } catch (error) {
         console.log(error);
       }

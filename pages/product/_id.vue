@@ -255,8 +255,8 @@ export default {
         const response = await this.$axios.$get(
         `http://localhost:5001/item/${this.item_id}`
         );
-        this.post = response.items;
-        this.image_url = response.items.images[0];
+        this.post = response.item_details;
+        this.image_url = response.item_details.images[0];
     },
 
     methods: {
