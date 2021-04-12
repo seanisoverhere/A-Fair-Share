@@ -45,7 +45,7 @@
             </thead>
             <tbody>
               <!-- one row -->
-              <tr  v-for="post in posts" :key="post.item_id">
+              <tr  v-for="item in items" :key="item.itemId">
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <div class="flex items-center">
                     <!-- item image -->
@@ -53,30 +53,30 @@
                       
                       <img
                         class="w-full h-full rounded-full"
-                        :src="post.image_url"
+                        :src="item.imageUrl"
                         alt=""
                       />
                     </div>
                     <!-- item name -->
                     <div class="ml-3">
                       <p class="text-gray-900 whitespace-no-wrap">
-                        {{post.item_name}}
+                        {{item.itemName}}
                       </p>
                     </div>
                   </div>
                 </td>
                 <!-- current count -->
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p class="text-gray-900 whitespace-no-wrap">{{post.current_count}}</p>
+                  <p class="text-gray-900 whitespace-no-wrap">{{item.currentCount}}</p>
                 </td>
                 <!-- shipping count -->
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                  <p class="text-gray-900 whitespace-no-wrap">{{post.shipping_count}}</p>
+                  <p class="text-gray-900 whitespace-no-wrap">{{item.shippingCount}}</p>
                 </td>
                 <!-- expiry date -->
                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <p class="text-gray-900 whitespace-no-wrap">
-                    {{post.expiry}}
+                    {{item.expiry}}
                   </p>
                 </td>
                 <!-- status of item -->
@@ -88,37 +88,37 @@
                       aria-hidden
                       class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
                     ></span>
-                    <span class="relative">{{post.status}}</span>
+                    <span class="relative">{{item.status}}</span>
                   </span>
                 </td>
 
                 <!--button to change status -->
                 <!-- pending -->
-                <td v-if="post.status == 'pending'" class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <td v-if="item.status == 'pending'" class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <button
                     class="bg-blue-500 text-white active:bg-blue-600  text-sm px-3 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    @click="set_shipping(post.item_id)">
+                    @click="set_shipping(item.itemId)">
                     Set to Shipping
                   </button>
                   <button
                     class="bg-gray-600 text-white active:bg-blue-600  text-sm px-3 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    @click="set_archive(post.item_id)">
+                    @click="set_archive(item.itemId)">
                     Set to Archive
                   </button>
                 </td>
                 <!-- shipping -->
-                <td v-else-if="post.status == 'shipping'" class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <td v-else-if="item.status == 'shipping'" class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   <button
                     class="bg-green-500 text-white active:bg-blue-600  text-sm px-3 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    @click="set_completed(post.item_id)">
+                    @click="set_completed(item.itemId)">
                     Set to Completed
                   </button>
                 </td>
                 <!-- completed -->
-                <td v-else-if="post.status == 'archived'" class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <td v-else-if="item.status == 'archived'" class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                   archived
                 </td>
 
@@ -372,6 +372,9 @@
 </template>
 
 <script>
+
+import gql from 'graphql-tag';
+
 export default {
   name: "admin",
   data() {
@@ -390,6 +393,25 @@ export default {
       expiry:'',
     };
   },
+
+  apollo: {
+    items: {
+      query: gql`
+        query {
+          items {
+            itemId
+            itemName
+            shippingCount
+            currentCount
+            imageUrl
+            status
+            expiry
+          }
+        }
+      `,
+    },
+  },
+
   methods: {
     async set_shipping(item_id){
       console.log('entering shipping');
@@ -467,14 +489,15 @@ export default {
     }
   },
   // items pics
-  async beforeCreate() {
-    //console.log('hi')
-    const ip = await this.$axios.$get(`http://localhost:5001/item/all`)
+  // async beforeCreate() {
+  //   console.log('hi')
+  //   const ip = await this.$axios.$get(`http://localhost:5001/item/all`)
     
-    this.posts = ip.items
-    // console.log(this.posts)
-  },
+  //   this.posts = ip.items
+  //   console.log(this.posts)
+  // },
   
-  
+
 }
+
 </script>

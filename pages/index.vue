@@ -160,8 +160,14 @@ export default {
     ItemsCarousel,
   },
   async beforeCreate() {
-    const ip = await this.$axios.$get(url)
-    this.imageURL = ip.urls.full
+
+    try {
+      const ip = await this.$axios.$get(url)
+      this.imageURL = ip.urls.full
+    } catch(error) {
+      console.log("API max call reached")
+    }
+    
   },
 };
 </script>

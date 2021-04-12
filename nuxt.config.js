@@ -37,11 +37,25 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/axios',
+            '@nuxtjs/apollo',
+            '@nuxtjs/proxy',
             '@nuxtjs/auth-next',
             '@nuxtjs/dotenv',
             'vue-scrollto/nuxt'
           ],
 
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'http://localhost:4000/graphql',
+      }
+    }
+  },
+
+  proxy: [
+    'http://localhost:4000/graphql'
+  ],
+          
   axios: {
     // proxy: true
   },  
