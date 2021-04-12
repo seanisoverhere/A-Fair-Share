@@ -5,16 +5,16 @@
       <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-wrap -m-4">
 
-           <div class="lg:w-1/4 md:w-1/2 p-4 w-full" v-for="post in posts" :key="post.item_id" @click="handlePostClick(post.item_id)">
+           <div class="lg:w-1/4 md:w-1/2 p-4 w-full" v-for="item in itemsByStatus" :key="item.itemId" @click="handlePostClick(item.itemId)">
               <!-- FIRST image-->
               <a class="block relative h-48 rounded overflow-hidden">
-                <img alt="ecommerce" class="object-cover object-center w-full h-full block" :src="post.image_url" >
+                <img alt="ecommerce" class="object-cover object-center w-full h-full block" :src="item.imageUrl" >
               </a>
               <!--description below-->
               <div class="mt-4">
-                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{post.category}}</h3>
-                <h2 class="text-gray-900 title-font text-lg font-medium">{{post.item_name}}</h2>
-                <p class="mt-1">${{post.item_price}}</p>
+                <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{item.category}}</h3>
+                <h2 class="text-gray-900 title-font text-lg font-medium">{{item.itemName}}</h2>
+                <p class="mt-1">${{item.itemPrice}}</p>
               </div>
           </div> 
          
@@ -27,6 +27,7 @@
 
 <script>
 import NavbarComponent from "../components/Navbar"
+import gql from 'graphql-tag';
 
 export default {
   data() {
@@ -39,11 +40,31 @@ export default {
   components: {
     NavbarComponent
   },
-  // items pics
-  async beforeCreate() {
-    const ip = await this.$axios.$get(`http://localhost:5001/item/all/pending`)
-    this.posts = ip.items
+
+  apollo: {
+    itemsByStatus: {
+      query: gql`
+        query {
+          itemsByStatus(status: "pending") {
+            itemId
+            itemName
+            shippingCount
+            currentCount
+            imageUrl
+            itemDesc
+            category
+            itemPrice
+          }
+        }
+      `,
+    },
   },
+
+  // items pics
+  // async beforeCreate() {
+  //   const ip = await this.$axios.$get(`http://localhost:5001/item/all/pending`)
+  //   this.posts = ip.items
+  // },
 
   methods: {
     handlePostClick(id) {
